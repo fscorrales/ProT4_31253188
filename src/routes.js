@@ -4,8 +4,9 @@ import { libro } from "./controller.js";
 export const router = Router();
 
 router.get("/libros", libro.getAll);
-router.get("/libro/:id", libro.getOne);
+router.get("/libro/:isbn", libro.getOneByPath);
+router.get("/libro", libro.getOneByQuery);
 router.post("/libro", libro.add);
 router.put("/libro", libro.update);
-router.delete("/libro/:isbn", libro.delete)
-router.delete("/libro", libro.delete)
+router.delete("/libro/:isbn", libro.deleteByPath);
+router.delete("/libro", libro.deleteByQuery);
