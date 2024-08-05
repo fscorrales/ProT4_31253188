@@ -37,6 +37,20 @@ class LibroController {
             res.send(error.message);
         }
     }
+
+    async update(req, res) {
+        const libro = req.body;
+        try {
+            const [result] = await pool.query(
+                "UPDATE libros SET nombre = (?), autor = (?), categoria = (?), fecha = (?) WHERE isbn = (?)", 
+                [libro.nombre, libro.autor, libro.categoria, libro.fecha, libro.isbn]
+            );
+            res.json({"Registros actualizados":result.affectedRows});
+        } catch (error) {
+            res.status(404);
+            res.send(error.message);
+        }
+    }
 }
 
 export const libro = new LibroController();
