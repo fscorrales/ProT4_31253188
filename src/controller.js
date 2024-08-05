@@ -22,7 +22,21 @@ class LibroController {
             res.status(500);
             res.send(error.message);
         }
-    }   
+    }
+    
+    async add(req, res) {
+        try {
+            const libro = req.body;
+            const [result] = await pool.query(
+                "INSERT INTO libros (nombre, autor, categoria, fecha, ISBN) VALUES (?, ?, ?, ?, ?)",
+                [libro.nombre, libro.autor, libro.categoria, libro.fecha, libro.isbn]
+            );
+            res.json({ id: result.insertId, ...libro });
+        } catch (error) {
+            res.status(404);
+            res.send(error.message);
+        }
+    }
 }
 
 export const libro = new LibroController();
