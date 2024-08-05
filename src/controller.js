@@ -51,6 +51,28 @@ class LibroController {
             res.send(error.message);
         }
     }
+
+    async delete(req, res) {
+        const isbn = req.params.isbn;
+        try {
+            const [result] = await pool.query("DELETE FROM libros WHERE isbn = ?", [isbn]);
+            res.json({"Registros eliminados":result.affectedRows});
+        } catch (error) {
+            res.status(404);
+            res.send(error.message);
+        }
+    }
+
+    async delete(req, res) {
+        const libro = req.body;
+        try {
+            const [result] = await pool.query("DELETE FROM libros WHERE isbn = ?", [libro.isbn]);
+            res.json({"Registros eliminados":result.affectedRows});
+        } catch (error) {
+            res.status(404);
+            res.send(error.message);
+        }
+    }
 }
 
 export const libro = new LibroController();
