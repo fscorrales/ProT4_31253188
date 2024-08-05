@@ -39,9 +39,10 @@ class LibroController {
     async add(req, res) {
         try {
             const libro = req.body;
+            const fecha = libro.fecha.split("T")[0]; // Obtener solo la parte de la fecha
             const [result] = await pool.query(
                 "INSERT INTO libros (nombre, autor, categoria, fecha, ISBN) VALUES (?, ?, ?, ?, ?)",
-                [libro.nombre, libro.autor, libro.categoria, libro.fecha, libro.isbn]
+                [libro.nombre, libro.autor, libro.categoria, fecha, libro.isbn]
             );
             res.json({ id: result.insertId, ...libro });
         } catch (error) {
