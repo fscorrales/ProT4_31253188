@@ -15,9 +15,9 @@ class LibroController {
     }
 
     async getOneByPath(req, res) {
-        const isbn = req.params.isbn;
+        const id = req.params.id;
         try {
-            const [rows] = await pool.query("SELECT * FROM libros WHERE isbn = ?", [isbn]);
+            const [rows] = await pool.query("SELECT * FROM libros WHERE id = ?", [id]);
             res.json(rows[0]);
         } catch (error) {
             res.status(500);
@@ -28,7 +28,7 @@ class LibroController {
     async getOneByQuery(req, res) {
         const libro = req.body;
         try {
-            const [rows] = await pool.query("SELECT * FROM libros WHERE isbn = ?", [libro.isbn]);
+            const [rows] = await pool.query("SELECT * FROM libros WHERE id = ?", [libro.id]);
             res.json(rows[0]);
         } catch (error) {
             res.status(500);
