@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-08-2024 a las 03:29:36
+-- Tiempo de generación: 12-08-2024 a las 21:39:47
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -28,7 +28,8 @@ USE `corrales_biblioteca`;
 --
 -- Estructura de tabla para la tabla `libros`
 --
--- Creación: 05-08-2024 a las 22:45:07
+-- Creación: 12-08-2024 a las 18:31:32
+-- Última actualización: 12-08-2024 a las 19:35:30
 --
 
 CREATE TABLE `libros` (
@@ -36,7 +37,7 @@ CREATE TABLE `libros` (
   `nombre` varchar(30) NOT NULL,
   `autor` varchar(30) NOT NULL,
   `categoria` varchar(30) NOT NULL,
-  `fecha` date NOT NULL,
+  `ano_publicacion` date NOT NULL,
   `isbn` varchar(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -44,7 +45,7 @@ CREATE TABLE `libros` (
 -- Volcado de datos para la tabla `libros`
 --
 
-INSERT INTO `libros` (`id`, `nombre`, `autor`, `categoria`, `fecha`, `isbn`) VALUES
+INSERT INTO `libros` (`id`, `nombre`, `autor`, `categoria`, `ano_publicacion`, `isbn`) VALUES
 (1, 'El Alquimista', 'Paulo Coelho', 'Realismo Magico', '2012-12-01', '6073114419'),
 (2, 'El Principito', 'Antoine De Saint-Exupéry', 'Infantil', '1943-12-31', '9783444930055'),
 (3, 'El Retrato de Dorian Gray', 'Oscar Wilde', 'Gotico', '1890-07-01', '9788491000173'),
@@ -69,7 +70,7 @@ ALTER TABLE `libros`
 -- AUTO_INCREMENT de la tabla `libros`
 --
 ALTER TABLE `libros`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
