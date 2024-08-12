@@ -4,7 +4,7 @@ import { libro } from "./controller.js";
 export const router = Router();
 
 router.get("/libros", libro.getAll);
-router.get("/libro/:id", libro.getOneByPath);
+router.get("/libro/:id", libro.getOneByPathname);
 router.get("/libro", libro.getOneByQuery);
 router.post("/libro", libro.add);
 router.put("/libro", libro.update);
